@@ -12,14 +12,11 @@ def loop_ranger(start, stop=None, step=1):
 
     Do this using any method apart from just using range()
     """
-    a_list = []
-    counter = start
-    while counter < stop:
-        a_list.append(counter)
-        counter += 1
-    return a_list
-
-
+    rangeList = []
+    while start < stop:
+        rangeList.append(start)
+        start += step
+    return rangeList
 
 
 def lone_ranger(start, stop, step):
@@ -27,7 +24,7 @@ def lone_ranger(start, stop, step):
 
     Look up the docs for range() and wrap it in a 1:1 way
     """
-    pass
+    return list(range(start, stop, step))
 
 
 def two_step_ranger(start, stop):
@@ -36,7 +33,7 @@ def two_step_ranger(start, stop):
     Sometimes you want to hide complexity.
     Make a range function that always has a step size of 2
     """
-    pass
+    return lone_ranger(start, stop, 2)
 
 
 def stubborn_asker(low, high):
@@ -45,7 +42,14 @@ def stubborn_asker(low, high):
     Ask for a number, and if the response is outside the bounds keep asking
     until you get a number that you think is OK
     """
-    pass
+    answered = False
+    while answered is False:
+        num = input("Enter a number between {} and {}: ".format(low, high))
+        if int(num) > low and int(num) < high:
+            answered = True
+            break
+        print(str(answered))
+    return num
 
 
 def not_number_rejector(message):
@@ -55,7 +59,18 @@ def not_number_rejector(message):
     "six", "8!") then throw it out and ask for an actual number.
     When you do get a number, return it.
     """
-    pass
+    answered = False
+    while not answered:
+        answered = True
+        inputVar = input(message)
+        try:
+            inputVar = int(inputVar)
+        except Exception:
+            try:
+                inputVar = float(inputVar)
+            except Exception:
+                answered = False
+    return inputVar
 
 
 def super_asker(low, high):
@@ -64,7 +79,14 @@ def super_asker(low, high):
     Combine stubborn_asker and not_number_rejector to make a function
     that does it all!
     """
-    pass
+    answered = False
+    while answered is False:
+        num = not_number_rejector("Enter a number between {} and {}: ".format(low, high))
+        if int(num) > low and int(num) < high:
+            answered = True
+            break
+        print(str(answered))
+    return num
 
 
 if __name__ == "__main__":

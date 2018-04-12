@@ -7,7 +7,8 @@ def is_odd(a_number):
 
     Look into modulo division using the '%' operator as one way of doing this.
     """
-    pass
+    return a_number % 2 == 1
+
 
 
 def fix_it(moves=True, should_move=True):
@@ -21,7 +22,12 @@ def fix_it(moves=True, should_move=True):
     "Duct Tape"
     "No Problem"
     """
-    pass
+    if moves == should_move:
+        return "No Problem"
+    elif moves:
+        return "Duct Tape"
+    else:
+        return "WD-40"
 
 
 def loops_1a():
@@ -31,7 +37,11 @@ def loops_1a():
     return a list of 10 items, each one a string with exacly one star in it.
     E.g.: ['*', '*', '*', '*', '*', '*', '*', '*', '*', '*']
     """
-    pass
+    starList = []
+    for x in range(10):
+        starList.append("*")
+    return starList
+
 
 
 
@@ -43,7 +53,7 @@ def loops_1c(number_of_items=5, symbol="#"):
     a string with exacly one symbol in it.
     E.g.: ['#', '#', '#', '#', '#']
     """
-    pass
+    return [symbol] * number_of_items
 
 
 def loops_2():
@@ -64,7 +74,7 @@ def loops_2():
             ['*', '*', '*', '*', '*', '*', '*', '*', '*', '*'],
           ]
     """
-    pass
+    return [['*'] * 10] * 10
 
 
 def loops_3():
@@ -88,7 +98,7 @@ def loops_3():
     TIP: notice that this needs to to return strings of numbers,
          so call str(number) to cast.
     """
-    pass
+    return [[str(x)]* 10 for x in range(10)]
 
 
 def loops_4():
@@ -108,7 +118,7 @@ def loops_4():
       ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
     ]
     """
-    pass
+    return [[str(x) for x in range(10)]] * 10
 
 
 def loops_5():
@@ -133,7 +143,18 @@ def loops_5():
         "There are {} green bottles".format(8)
     you'll come to see the pros and cons of each over time.
     """
-    pass
+    # long answer
+    return_list = []
+    for x in range(10):
+        mini_list = []
+        for y in range(5):
+            mini_list.append("(i{}, j{})".format(x, y))
+        return_list.append(mini_list)
+    # return return_list # -- uncomment this and check the value of return list 
+    
+    # short ans
+    return [[f"(i{x}, j{y})" for y in range(5)] for x in range(10)]
+
 
 
 def loops_6():
@@ -156,7 +177,13 @@ def loops_6():
     You can use a variable.
     TIP: look out for the starting condition.
     """
-    pass
+    wedgeList = []
+    for x in range(10):
+        tempLine = []
+        for y in range(x+1):
+            tempLine.append(str(y))
+        wedgeList.append(tempLine)
+    return wedgeList
 
 
 def loops_7():
@@ -180,7 +207,16 @@ def loops_7():
     This is a hard problem. Use lots of experimentation and draw
     lots of diagrams!
     """
-    pass
+    middle_index = 4
+    return_list = []
+    for x in range(5):
+        element_list = [' '] * 9
+        for i in range(middle_index-x, middle_index+x+1):
+            element_list[i] = '*'
+        return_list.append(element_list)
+    return return_list
+        
+            
 
 
 def lp(some_kind_of_list, exercise_name):
